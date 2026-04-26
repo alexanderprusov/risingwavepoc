@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: psql-client
-  namespace: risingwavepoc
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
         - name: psql
-          image: postgres:15-alpine
+          image: {{ .Values.psqlClient.image }}
           command: ["sleep", "infinity"]
           env:
             - name: PGHOST
-              value: risingwave
+              value: {{ .Values.psqlClient.risingwaveHost }}
             - name: PGPORT
-              value: "4567"
+              value: "{{ .Values.psqlClient.risingwavePort }}"
             - name: PGUSER
               value: root
             - name: PGDATABASE

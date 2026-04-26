@@ -1,0 +1,5 @@
+apiVersion: v2
+name: risingwavepoc-app
+description: RisingWave POC application
+type: application
+version: 0.1.0

@@ -1,0 +1,15 @@
+namespace: risingwavepoc
+
+app:
+  image: risingwavepoc/app:latest
+  imagePullPolicy: Never
+  port: 8080
+  nodePort: 30080
+
+psqlClient:
+  image: postgres:15-alpine
+  risingwaveHost: risingwave
+  risingwavePort: 4567
+
+gateway:
+  name: risingwavepoc-gw
