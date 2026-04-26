@@ -1,0 +1,5 @@
+apiVersion: v2
+name: kafka
+description: Kafka (KRaft, single node) for risingwavepoc
+type: application
+version: 0.1.0

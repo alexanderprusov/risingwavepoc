@@ -14,7 +14,9 @@ export DOCKER_CERT_PATH="$HOME/.minikube/certs"
 # ## Deploy
 
 kubectl create namespace risingwavepoc
+kubectl create namespace kafka
 helm install risingwave risingwavelabs/risingwave -n risingwavepoc -f helm/risingwave-values.yaml
+helm install kafka helm/kafka -n kafka
 helm install risingwavepoc-app helm/app -n risingwavepoc
 
 # ## Redeploy App
