@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0004-create-alpha-beta-ref
+      author: alex
+      runInTransaction: false
+      changes:
+        - sql:
+            sql: |
+              CREATE TABLE IF NOT EXISTS alpha_beta_ref (
+                  alpha_id    BIGINT NOT NULL,
+                  beta_id     BIGINT NOT NULL,
+                  created_at  TIMESTAMPTZ NOT NULL,
+                  PRIMARY KEY (alpha_id, beta_id)
+              )

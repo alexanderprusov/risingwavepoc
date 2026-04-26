@@ -1,0 +1,44 @@
+tags:
+  minio: true
+  postgresql: true
+
+metaStore:
+  postgresql:
+    enabled: true
+    host: risingwave-postgresql
+    port: 5432
+    database: risingwave
+    credentials:
+      username: risingwave
+      password: risingwave
+
+stateStore:
+  minio:
+    enabled: true
+    endpoint: "risingwave-minio:9000"
+    bucket: "risingwave"
+    credentials:
+      username: admin
+      password: adminadmin
+
+postgresql:
+  auth:
+    username: risingwave
+    password: risingwave
+    database: risingwave
+
+minio:
+  auth:
+    rootUser: admin
+    rootPassword: adminadmin
+  defaultBuckets: "risingwave"
+
+computeComponent:
+  replicas: 2
+
+frontendComponent:
+  replicas: 2
+
+compactorComponent:
+  replicas: 1
+

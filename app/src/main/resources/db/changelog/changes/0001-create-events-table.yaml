@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0001-create-events-table
+      author: alex
+      runInTransaction: false
+      changes:
+        - sql:
+            sql: |
+              CREATE TABLE IF NOT EXISTS events (
+                  id         BIGINT PRIMARY KEY,
+                  type       VARCHAR NOT NULL,
+                  payload    VARCHAR,
+                  created_at TIMESTAMPTZ NOT NULL
+              )

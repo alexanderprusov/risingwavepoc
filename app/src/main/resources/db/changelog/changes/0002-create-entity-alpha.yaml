@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0002-create-entity-alpha
+      author: alex
+      runInTransaction: false
+      changes:
+        - sql:
+            sql: |
+              CREATE TABLE IF NOT EXISTS entity_alpha (
+                  id                  BIGINT PRIMARY KEY,
+                  alpha_name          VARCHAR NOT NULL,
+                  alpha_code          VARCHAR,
+                  alpha_count         INT,
+                  alpha_value         BIGINT,
+                  alpha_score         INT,
+                  alpha_amount        BIGINT,
+                  alpha_description   VARCHAR,
+                  alpha_status        VARCHAR,
+                  alpha_created_at    TIMESTAMPTZ NOT NULL,
+                  alpha_updated_at    TIMESTAMPTZ
+              )

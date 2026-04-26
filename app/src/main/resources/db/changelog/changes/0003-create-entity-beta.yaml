@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0003-create-entity-beta
+      author: alex
+      runInTransaction: false
+      changes:
+        - sql:
+            sql: |
+              CREATE TABLE IF NOT EXISTS entity_beta (
+                  id                  BIGINT PRIMARY KEY,
+                  beta_title          VARCHAR NOT NULL,
+                  beta_ref_code       VARCHAR,
+                  beta_quantity       INT,
+                  beta_total          BIGINT,
+                  beta_priority       INT,
+                  beta_sequence       INT,
+                  beta_weight         BIGINT,
+                  beta_checksum       BIGINT,
+                  beta_notes          VARCHAR,
+                  beta_label          VARCHAR,
+                  beta_category       VARCHAR,
+                  beta_tag            VARCHAR,
+                  beta_created_at     TIMESTAMPTZ NOT NULL,
+                  beta_updated_at     TIMESTAMPTZ,
+                  beta_expires_at     TIMESTAMPTZ
+              )
