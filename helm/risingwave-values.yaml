@@ -32,6 +32,9 @@ minio:
     rootUser: admin
     rootPassword: adminadmin
   defaultBuckets: "risingwave"
+  extraEnvVars:
+    - name: MINIO_API_REQUESTS_MAX
+      value: "0"
 
 computeComponent:
   replicas: 2
@@ -41,4 +44,3 @@ frontendComponent:
 
 compactorComponent:
   replicas: 1
-

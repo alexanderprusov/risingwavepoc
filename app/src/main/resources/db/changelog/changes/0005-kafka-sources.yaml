@@ -1,0 +1,88 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0005-kafka-sources
+      author: alex
+      runInTransaction: false
+      changes:
+        - sql:
+            sql: |
+              CREATE SOURCE IF NOT EXISTS entities (
+                  id        BIGINT,
+                  type      VARCHAR,
+                  payload   VARCHAR,
+                  ts        VARCHAR
+              ) WITH (
+                  connector                   = 'kafka',
+                  topic                       = 'entities',
+                  properties.bootstrap.server = 'kafka.risingwavepoc-kafka.svc.cluster.local:9092',
+                  scan.startup.mode           = 'earliest'
+              ) FORMAT PLAIN ENCODE PROTOBUF (
+                  message         = 'Entity',
+                  schema.location = 'http://proto-server.risingwavepoc.svc.cluster.local:80/entity.pb'
+              )
+        - sql:
+            sql: |
+              CREATE SOURCE IF NOT EXISTS alpha (
+                  id                BIGINT,
+                  alpha_name        VARCHAR,
+                  alpha_code        VARCHAR,
+                  alpha_count       INT,
+                  alpha_value       BIGINT,
+                  alpha_score       INT,
+                  alpha_amount      BIGINT,
+                  alpha_description VARCHAR,
+                  alpha_status      VARCHAR,
+                  alpha_created_at  VARCHAR,
+                  alpha_updated_at  VARCHAR
+              ) WITH (
+                  connector                   = 'kafka',
+                  topic                       = 'alpha',
+                  properties.bootstrap.server = 'kafka.risingwavepoc-kafka.svc.cluster.local:9092',
+                  scan.startup.mode           = 'earliest'
+              ) FORMAT PLAIN ENCODE PROTOBUF (
+                  message         = 'Alpha',
+                  schema.location = 'http://proto-server.risingwavepoc.svc.cluster.local:80/alpha.pb'
+              )
+        - sql:
+            sql: |
+              CREATE SOURCE IF NOT EXISTS beta (
+                  id              BIGINT,
+                  beta_title      VARCHAR,
+                  beta_ref_code   VARCHAR,
+                  beta_quantity   INT,
+                  beta_total      BIGINT,
+                  beta_priority   INT,
+                  beta_sequence   INT,
+                  beta_weight     BIGINT,
+                  beta_checksum   BIGINT,
+                  beta_notes      VARCHAR,
+                  beta_label      VARCHAR,
+                  beta_category   VARCHAR,
+                  beta_tag        VARCHAR,
+                  beta_created_at VARCHAR,
+                  beta_updated_at VARCHAR,
+                  beta_expires_at VARCHAR
+              ) WITH (
+                  connector                   = 'kafka',
+                  topic                       = 'beta',
+                  properties.bootstrap.server = 'kafka.risingwavepoc-kafka.svc.cluster.local:9092',
+                  scan.startup.mode           = 'earliest'
+              ) FORMAT PLAIN ENCODE PROTOBUF (
+                  message         = 'Beta',
+                  schema.location = 'http://proto-server.risingwavepoc.svc.cluster.local:80/beta.pb'
+              )
+        - sql:
+            sql: |
+              CREATE SOURCE IF NOT EXISTS refs (
+                  alpha_id   BIGINT,
+                  beta_id    BIGINT,
+                  created_at VARCHAR
+              ) WITH (
+                  connector                   = 'kafka',
+                  topic                       = 'refs',
+                  properties.bootstrap.server = 'kafka.risingwavepoc-kafka.svc.cluster.local:9092',
+                  scan.startup.mode           = 'earliest'
+              ) FORMAT PLAIN ENCODE PROTOBUF (
+                  message         = 'Ref',
+                  schema.location = 'http://proto-server.risingwavepoc.svc.cluster.local:80/ref.pb'
+              )

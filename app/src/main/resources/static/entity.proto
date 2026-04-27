@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message Entity {
+  int64  id      = 1;
+  string type    = 2;
+  string payload = 3;
+  string ts      = 4;
+}

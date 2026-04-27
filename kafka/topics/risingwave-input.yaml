@@ -1,6 +1,0 @@
-name: risingwave-input
-partitions: 8
-replication-factor: 2        # requires 2 brokers (replicas: 2 in helm/kafka/values.yaml)
-config:
-  cleanup.policy: delete
-  retention.ms: 604800000   # 7 days

@@ -1,0 +1,6 @@
+name: entities
+partitions: 8
+replication-factor: 2
+config:
+  cleanup.policy: delete
+  retention.ms: 604800000   # 7 days

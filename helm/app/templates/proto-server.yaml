@@ -1,0 +1,61 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: proto-descriptors
+  namespace: {{ .Values.namespace }}
+binaryData:
+  entity.pb: CpEBCgxlbnRpdHkucHJvdG8iVgoGRW50aXR5Eg4KAmlkGAEgASgDUgJpZBISCgR0eXBlGAIgASgJUgR0eXBlEhgKB3BheWxvYWQYAyABKAlSB3BheWxvYWQSDgoCdHMYBCABKAlSAnRzQiEKEmNvbS5hbGV4LnJ3cC5wcm90b0ILRW50aXR5UHJvdG9iBnByb3RvMw==
+  alpha.pb: CtMDCgthbHBoYS5wcm90byKZAwoFQWxwaGESDgoCaWQYASABKANSAmlkEh0KCmFscGhhX25hbWUYAiABKAlSCWFscGhhTmFtZRIdCgphbHBoYV9jb2RlGAMgASgJUglhbHBoYUNvZGUSHwoLYWxwaGFfY291bnQYBCABKAVSCmFscGhhQ291bnQSHwoLYWxwaGFfdmFsdWUYBSABKANSCmFscGhhVmFsdWUSHwoLYWxwaGFfc2NvcmUYBiABKAVSCmFscGhhU2NvcmUSIQoMYWxwaGFfYW1vdW50GAcgASgDUgthbHBoYUFtb3VudBIrChFhbHBoYV9kZXNjcmlwdGlvbhgIIAEoCVIQYWxwaGFEZXNjcmlwdGlvbhIhCgxhbHBoYV9zdGF0dXMYCSABKAlSC2FscGhhU3RhdHVzEigKEGFscGhhX2NyZWF0ZWRfYXQYCiABKAlSDmFscGhhQ3JlYXRlZEF0Ei0KEGFscGhhX3VwZGF0ZWRfYXQYCyABKAlIAFIOYWxwaGFVcGRhdGVkQXSIAQFCEwoRX2FscGhhX3VwZGF0ZWRfYXRCIAoSY29tLmFsZXgucndwLnByb3RvQgpBbHBoYVByb3RvYgZwcm90bzM=
+  beta.pb: Co0FCgpiZXRhLnByb3RvItUECgRCZXRhEg4KAmlkGAEgASgDUgJpZBIdCgpiZXRhX3RpdGxlGAIgASgJUgliZXRhVGl0bGUSIgoNYmV0YV9yZWZfY29kZRgDIAEoCVILYmV0YVJlZkNvZGUSIwoNYmV0YV9xdWFudGl0eRgEIAEoBVIMYmV0YVF1YW50aXR5Eh0KCmJldGFfdG90YWwYBSABKANSCWJldGFUb3RhbBIjCg1iZXRhX3ByaW9yaXR5GAYgASgFUgxiZXRhUHJpb3JpdHkSIwoNYmV0YV9zZXF1ZW5jZRgHIAEoBVIMYmV0YVNlcXVlbmNlEh8KC2JldGFfd2VpZ2h0GAggASgDUgpiZXRhV2VpZ2h0EiMKDWJldGFfY2hlY2tzdW0YCSABKANSDGJldGFDaGVja3N1bRIdCgpiZXRhX25vdGVzGAogASgJUgliZXRhTm90ZXMSHQoKYmV0YV9sYWJlbBgLIAEoCVIJYmV0YUxhYmVsEiMKDWJldGFfY2F0ZWdvcnkYDCABKAlSDGJldGFDYXRlZ29yeRIZCghiZXRhX3RhZxgNIAEoCVIHYmV0YVRhZxImCg9iZXRhX2NyZWF0ZWRfYXQYDiABKAlSDWJldGFDcmVhdGVkQXQSKwoPYmV0YV91cGRhdGVkX2F0GA8gASgJSABSDWJldGFVcGRhdGVkQXSIAQESKwoPYmV0YV9leHBpcmVzX2F0GBAgASgJSAFSDWJldGFFeHBpcmVzQXSIAQFCEgoQX2JldGFfdXBkYXRlZF9hdEISChBfYmV0YV9leHBpcmVzX2F0Qh8KEmNvbS5hbGV4LnJ3cC5wcm90b0IJQmV0YVByb3RvYgZwcm90bzM=
+  ref.pb: Co0BCglyZWYucHJvdG8iWAoDUmVmEhkKCGFscGhhX2lkGAEgASgDUgdhbHBoYUlkEhcKB2JldGFfaWQYAiABKANSBmJldGFJZBIdCgpjcmVhdGVkX2F0GAMgASgJUgljcmVhdGVkQXRCHgoSY29tLmFsZXgucndwLnByb3RvQghSZWZQcm90b2IGcHJvdG8z
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proto-server
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proto-server
+  template:
+    metadata:
+      labels:
+        app: proto-server
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: proto
+              mountPath: /usr/share/nginx/html/entity.pb
+              subPath: entity.pb
+            - name: proto
+              mountPath: /usr/share/nginx/html/alpha.pb
+              subPath: alpha.pb
+            - name: proto
+              mountPath: /usr/share/nginx/html/beta.pb
+              subPath: beta.pb
+            - name: proto
+              mountPath: /usr/share/nginx/html/ref.pb
+              subPath: ref.pb
+      volumes:
+        - name: proto
+          configMap:
+            name: proto-descriptors
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proto-server
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: proto-server
+  ports:
+    - port: 80
+      targetPort: 80

@@ -1,0 +1,22 @@
+syntax = "proto3";
+option java_package = "com.alex.rwp.proto";
+option java_outer_classname = "BetaProto";
+
+message Beta {
+  int64  id             = 1;
+  string beta_title     = 2;
+  string beta_ref_code  = 3;
+  int32  beta_quantity  = 4;
+  int64  beta_total     = 5;
+  int32  beta_priority  = 6;
+  int32  beta_sequence  = 7;
+  int64  beta_weight    = 8;
+  int64  beta_checksum  = 9;
+  string beta_notes     = 10;
+  string beta_label     = 11;
+  string beta_category  = 12;
+  string beta_tag       = 13;
+  string beta_created_at = 14;
+  optional string beta_updated_at = 15;
+  optional string beta_expires_at = 16;
+}

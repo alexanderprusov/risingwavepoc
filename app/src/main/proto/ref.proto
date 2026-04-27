@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_package = "com.alex.rwp.proto";
+option java_outer_classname = "RefProto";
+
+message Ref {
+  int64  alpha_id   = 1;
+  int64  beta_id    = 2;
+  string created_at = 3;
+}

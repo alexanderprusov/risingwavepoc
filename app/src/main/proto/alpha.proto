@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package = "com.alex.rwp.proto";
+option java_outer_classname = "AlphaProto";
+
+message Alpha {
+  int64  id                = 1;
+  string alpha_name        = 2;
+  string alpha_code        = 3;
+  int32  alpha_count       = 4;
+  int64  alpha_value       = 5;
+  int32  alpha_score       = 6;
+  int64  alpha_amount      = 7;
+  string alpha_description = 8;
+  string alpha_status      = 9;
+  string alpha_created_at  = 10;
+  optional string alpha_updated_at = 11;
+}

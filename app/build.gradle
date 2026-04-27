@@ -3,7 +3,37 @@ plugins {
     id 'org.springframework.boot' version '3.3.4'
     id 'io.spring.dependency-management' version '1.1.6'
     id 'com.google.cloud.tools.jib' version '3.4.3'
+    id 'com.google.protobuf' version '0.9.4'
 }
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.25.5'
+    }
+}
+
+def protoSrcDir = "$projectDir/src/main/proto"
+
+task generateDescriptors {
+    def protos = ['alpha', 'beta', 'entity', 'ref']
+    inputs.files  protos.collect { "$protoSrcDir/${it}.proto" }
+    outputs.files protos.collect { "$protoSrcDir/${it}.pb" }
+    doLast {
+        def protocExe = configurations.detachedConfiguration(
+            dependencies.create('com.google.protobuf:protoc:3.25.5:linux-x86_64@exe')
+        ).singleFile
+        protos.each { name ->
+            exec {
+                commandLine protocExe.absolutePath,
+                    "--proto_path=$protoSrcDir",
+                    "--descriptor_set_out=$protoSrcDir/${name}.pb",
+                    "${name}.proto"
+            }
+        }
+    }
+}
+
+generateProto.dependsOn generateDescriptors
 
 jib {
     from {
@@ -23,6 +53,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'com.google.protobuf:protobuf-java:3.25.5'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.liquibase:liquibase-core'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'

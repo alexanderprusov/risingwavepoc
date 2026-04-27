@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0006-kafka-mvs
+      author: alex
+      runInTransaction: false
+      changes:
+        - sql:
+            sql: CREATE MATERIALIZED VIEW IF NOT EXISTS mv_entities AS SELECT * FROM entities
+        - sql:
+            sql: CREATE MATERIALIZED VIEW IF NOT EXISTS mv_alpha AS SELECT * FROM alpha
+        - sql:
+            sql: CREATE MATERIALIZED VIEW IF NOT EXISTS mv_beta AS SELECT * FROM beta
+        - sql:
+            sql: CREATE MATERIALIZED VIEW IF NOT EXISTS mv_refs AS SELECT * FROM refs

@@ -11,12 +11,26 @@ psql -h localhost -p 4567 -U root -d dev
 
 # ## Quick Selects
 
--- row counts
+-- row counts (tables)
 SELECT
   (SELECT COUNT(*) FROM entity_alpha)   AS alphas,
   (SELECT COUNT(*) FROM entity_beta)    AS betas,
   (SELECT COUNT(*) FROM alpha_beta_ref) AS refs,
   (SELECT COUNT(*) FROM events)         AS events;
+
+-- row counts (kafka sources)
+SELECT
+  (SELECT COUNT(*) FROM entities) AS entities,
+  (SELECT COUNT(*) FROM alpha)    AS alpha,
+  (SELECT COUNT(*) FROM beta)     AS beta,
+  (SELECT COUNT(*) FROM refs)     AS refs;
+
+-- row counts (materialized views)
+SELECT
+  (SELECT COUNT(*) FROM mv_entities) AS entities,
+  (SELECT COUNT(*) FROM mv_alpha)    AS alpha,
+  (SELECT COUNT(*) FROM mv_beta)     AS beta,
+  (SELECT COUNT(*) FROM mv_refs)     AS refs;
 
 -- latest alphas
 SELECT * FROM entity_alpha ORDER BY alpha_created_at DESC LIMIT 10;

@@ -59,7 +59,7 @@ public class DataGeneratorController {
 
     @PostMapping
     @Operation(summary = "Generate test data", description = "Inserts N records into entity_alpha, entity_beta, and alpha_beta_ref. Defaults to 10.")
-    public Map<String, Object> generate(@RequestParam(defaultValue = "10") int count) {
+    public Map<String, Object> generate(@RequestParam(defaultValue = "100000") int count) {
         var r = ThreadLocalRandom.current();
         Timestamp now = Timestamp.from(Instant.now());
 
@@ -146,8 +146,8 @@ public class DataGeneratorController {
     }
 
     @PostMapping("/events")
-    @Operation(summary = "Generate events", description = "Inserts N records into events. Defaults to 10.")
-    public Map<String, Object> generateEvents(@RequestParam(defaultValue = "10") int count) {
+    @Operation(summary = "Generate events", description = "Inserts N records into events. Defaults to 100000.")
+    public Map<String, Object> generateEvents(@RequestParam(defaultValue = "100000") int count) {
         Timestamp now = Timestamp.from(Instant.now());
 
         long genStart = System.currentTimeMillis();

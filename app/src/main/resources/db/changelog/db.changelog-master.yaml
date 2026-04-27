@@ -7,3 +7,7 @@ databaseChangeLog:
       file: db/changelog/changes/0003-create-entity-beta.yaml
   - include:
       file: db/changelog/changes/0004-create-alpha-beta-ref.yaml
+  - include:
+      file: db/changelog/changes/0005-kafka-sources.yaml
+  - include:
+      file: db/changelog/changes/0006-kafka-mvs.yaml
