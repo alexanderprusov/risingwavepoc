@@ -36,3 +36,22 @@ helm install risingwavepoc-app "$REPO_ROOT/helm/app" -n risingwavepoc
 kubectl rollout status deployment/risingwavepoc-app -n risingwavepoc --timeout=120s
 
 echo "==> Done"
+
+echo "Adding user"
+sudo usermod -aG docker $USER
+echo "==> Done"
+
+#
+#To add your user to the docker group:
+#                                                                                                                                                                                                    
+#  ! sudo usermod -aG docker $USER
+#
+#  Then either log out and back in, or run this to apply it in the current session:
+#
+#  ! newgrp docker
+#
+#  Verify it worked:
+#
+#  ! groups
+#
+#  You should see docker in the list.
