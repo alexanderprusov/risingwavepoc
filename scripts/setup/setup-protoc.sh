@@ -15,6 +15,8 @@ if [ -z "$SRC" ]; then
   exit 1
 fi
 
+chmod +x "$SRC"
+
 mkdir -p "$INSTALL_DIR"
 cp "$SRC" "$INSTALL_DIR/protoc"
 chmod +x "$INSTALL_DIR/protoc"
