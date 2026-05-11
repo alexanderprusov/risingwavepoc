@@ -1,0 +1,73 @@
+plugins {
+    id 'java'  // required by Jib; no Java sources are compiled
+    id 'com.google.cloud.tools.jib' version '3.4.3'
+}
+
+// Disable all Java lifecycle tasks – this module has no Java sources
+['compileJava', 'processResources', 'classes', 'jar',
+ 'compileTestJava', 'processTestResources', 'testClasses', 'test'].each { name ->
+    tasks.configureEach { if (it.name == name) it.enabled = false }
+}
+
+def ngDistDir = file("dist/rw-webui/browser")
+
+// ------------------------------------------------------------------
+// npm ci  (UP-TO-DATE when package-lock.json hasn't changed)
+// ------------------------------------------------------------------
+task npmInstall(type: Exec) {
+    workingDir projectDir
+    inputs.files 'package.json', 'package-lock.json'
+    outputs.file 'node_modules/.package-lock.json'
+    commandLine 'npm', 'ci'
+}
+
+// ------------------------------------------------------------------
+// ng build --configuration=production
+// ------------------------------------------------------------------
+task ngBuild(type: Exec) {
+    dependsOn npmInstall
+    workingDir projectDir
+    inputs.files(
+        fileTree('projects').include('**/*'),
+        file('angular.json'),
+        file('tsconfig.json'),
+        file('package.json'),
+        file('postcss.config.mjs')
+    )
+    outputs.dir ngDistDir
+    commandLine 'npx', 'ng', 'build', 'rw-webui', '--configuration=production'
+}
+
+// ------------------------------------------------------------------
+// Jib – package Angular dist into nginx:alpine
+// ------------------------------------------------------------------
+jib {
+    from {
+        image = 'nginx:alpine'
+    }
+    to {
+        image = 'risingwavepoc/rw-webui:latest'
+    }
+    container {
+        entrypoint = ['nginx', '-g', 'daemon off;']
+        ports = ['80']
+    }
+    extraDirectories {
+        paths {
+            path {
+                from = ngDistDir
+                into = '/usr/share/nginx/html'
+            }
+            path {
+                from = file('docker/nginx-conf')
+                into = '/etc/nginx/conf.d'
+            }
+        }
+    }
+    dockerClient {
+        executable = '/home/alex/data/software/docker/docker'
+    }
+}
+
+tasks.named('jibDockerBuild') { dependsOn ngBuild }
+tasks.named('jib')            { dependsOn ngBuild }
