@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: risingwavepoc-app
+  name: risingwavepoc-rw-loader
   namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: risingwavepoc-app
+      app: risingwavepoc-rw-loader
   template:
     metadata:
       labels:
-        app: risingwavepoc-app
+        app: risingwavepoc-rw-loader
     spec:
       containers:
-        - name: app
+        - name: rw-loader
           image: {{ .Values.app.image }}
           imagePullPolicy: {{ .Values.app.imagePullPolicy }}
           ports:

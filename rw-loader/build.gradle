@@ -40,7 +40,7 @@ jib {
         image = 'eclipse-temurin:21-jre-alpine'
     }
     to {
-        image = 'risingwavepoc/app:latest'
+        image = 'risingwavepoc/rw-loader:latest'
     }
     dockerClient {
         executable = '/home/alex/data/software/docker/docker'
