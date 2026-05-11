@@ -27,16 +27,16 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/rw-webui/tsconfig.app.json"
+      "path": "./workspace/rw-webui/tsconfig.app.json"
     },
     {
-      "path": "./projects/rw-webui/tsconfig.spec.json"
+      "path": "./workspace/rw-webui/tsconfig.spec.json"
     },
     {
-      "path": "./projects/toolkit/tsconfig.lib.json"
+      "path": "./workspace/toolkit/tsconfig.lib.json"
     },
     {
-      "path": "./projects/toolkit/tsconfig.spec.json"
+      "path": "./workspace/toolkit/tsconfig.spec.json"
     }
   ]
 }

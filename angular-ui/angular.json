@@ -2,9 +2,10 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": false
   },
-  "newProjectRoot": "projects",
+  "newProjectRoot": "workspace",
   "projects": {
     "rw-webui": {
       "projectType": "application",
@@ -13,23 +14,23 @@
           "style": "scss"
         }
       },
-      "root": "projects/rw-webui",
-      "sourceRoot": "projects/rw-webui/src",
+      "root": "workspace/rw-webui",
+      "sourceRoot": "workspace/rw-webui/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/rw-webui/src/main.ts",
-            "tsConfig": "projects/rw-webui/tsconfig.app.json",
+            "browser": "workspace/rw-webui/src/main.ts",
+            "tsConfig": "workspace/rw-webui/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/rw-webui/public"
+                "input": "workspace/rw-webui/public"
               }
             ],
-            "styles": ["projects/rw-webui/src/styles.css"]
+            "styles": ["workspace/rw-webui/src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -74,18 +75,18 @@
     },
     "toolkit": {
       "projectType": "library",
-      "root": "projects/toolkit",
-      "sourceRoot": "projects/toolkit/src",
+      "root": "workspace/toolkit",
+      "sourceRoot": "workspace/toolkit/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/toolkit/tsconfig.lib.prod.json"
+              "tsConfig": "workspace/toolkit/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/toolkit/tsconfig.lib.json"
+              "tsConfig": "workspace/toolkit/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -93,7 +94,7 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/toolkit/tsconfig.spec.json"
+            "tsConfig": "workspace/toolkit/tsconfig.spec.json"
           }
         }
       }

@@ -37,7 +37,16 @@ function generateRows(start: number, end: number): RowData[] {
   styleUrl: './app.scss',
 })
 export class App {
-  readonly theme = themeQuartz.withPart(colorSchemeDark);
+  readonly theme = themeQuartz.withPart(colorSchemeDark).withParams({
+    backgroundColor: 'oklch(12.9% 0.042 264.695)',   // slate-950
+    headerBackgroundColor: 'oklch(20.8% 0.042 265.755)', // slate-900
+    oddRowBackgroundColor: 'oklch(20.8% 0.042 265.755)', // slate-900
+    borderColor: 'oklch(37.2% 0.044 257.287)',        // slate-700
+    foregroundColor: 'oklch(96.8% 0.007 247.896)',    // slate-100
+    // headerForegroundColor: 'oklch(96.8% 0.007 247.896)', // slate-100
+    accentColor: 'oklch(68.5% 0.169 237.323)',        // sky-500
+    rowHoverColor: 'oklch(27.9% 0.041 260.031)',      // slate-800
+  });
   readonly totalRows = TOTAL_ROWS;
 
   readonly columnDefs: ColDef<RowData>[] = [

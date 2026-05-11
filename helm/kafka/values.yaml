@@ -1,7 +1,7 @@
 namespace: risingwavepoc-kafka
 replicas: 2
 
-image: apache/kafka:3.9.0
+image: apache/kafka:3.9.2
 storage: 10Gi
 nodePorts:
   - 30092
