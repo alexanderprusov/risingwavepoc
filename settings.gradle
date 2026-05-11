@@ -12,3 +12,4 @@ plugins {
 
 rootProject.name = 'risingwavepoc'
 include('rw-loader')
+include('rw-webui-api')

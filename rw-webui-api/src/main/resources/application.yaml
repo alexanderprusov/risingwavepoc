@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: none
+  datasource:
+    url: jdbc:postgresql://risingwave:4567/dev
+    username: root
+    password: ""
+    driver-class-name: org.postgresql.Driver
+
+rw-webui-api:
+  ws:
+    port: 8082
+    path: /ws
