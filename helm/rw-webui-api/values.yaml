@@ -1,0 +1,7 @@
+namespace: risingwavepoc
+
+app:
+  image: risingwavepoc/rw-webui-api:latest
+  imagePullPolicy: Never
+  port: 8082
+  nodePort: 30082

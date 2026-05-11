@@ -1,0 +1,5 @@
+apiVersion: v2
+name: risingwavepoc-rw-webui
+description: RisingWave POC Angular UI (nginx)
+type: application
+version: 0.1.0

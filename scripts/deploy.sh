@@ -27,13 +27,24 @@ helm upgrade --install risingwave risingwavelabs/risingwave -n risingwavepoc -f 
 kubectl rollout status deployment/risingwave-frontend -n risingwavepoc --timeout=180s
 kubectl rollout status statefulset/risingwave-compute -n risingwavepoc --timeout=180s
 
-echo "==> Building and deploying rw-loader"
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://${NODE_IP}:2376"
 export DOCKER_CERT_PATH="$HOME/.minikube/certs"
+
+echo "==> Building and deploying rw-loader"
 "$REPO_ROOT/gradlew" -p "$REPO_ROOT" :rw-loader:jibDockerBuild
 helm upgrade --install risingwavepoc-rw-loader "$REPO_ROOT/helm/rw-loader" -n risingwavepoc
 kubectl rollout status deployment/risingwavepoc-rw-loader -n risingwavepoc --timeout=120s
+
+echo "==> Building and deploying rw-webui-api"
+"$REPO_ROOT/gradlew" -p "$REPO_ROOT" :rw-webui-api:jibDockerBuild
+helm upgrade --install risingwavepoc-rw-webui-api "$REPO_ROOT/helm/rw-webui-api" -n risingwavepoc
+kubectl rollout status deployment/risingwavepoc-rw-webui-api -n risingwavepoc --timeout=120s
+
+echo "==> Building and deploying rw-webui"
+"$REPO_ROOT/gradlew" -p "$REPO_ROOT" :angular-ui:jibDockerBuild
+helm upgrade --install risingwavepoc-rw-webui "$REPO_ROOT/helm/rw-webui" -n risingwavepoc
+kubectl rollout status deployment/risingwavepoc-rw-webui -n risingwavepoc --timeout=120s
 
 echo "==> Done"
 

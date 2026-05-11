@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risingwavepoc-rw-webui
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: risingwavepoc-rw-webui
+  template:
+    metadata:
+      labels:
+        app: risingwavepoc-rw-webui
+    spec:
+      containers:
+        - name: rw-webui
+          image: {{ .Values.app.image }}
+          imagePullPolicy: {{ .Values.app.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .Values.app.port }}

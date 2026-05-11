@@ -1,0 +1,5 @@
+apiVersion: v2
+name: risingwavepoc-rw-webui-api
+description: RisingWave POC WebSocket API (Spring Boot + Vert.x)
+type: application
+version: 0.1.0
