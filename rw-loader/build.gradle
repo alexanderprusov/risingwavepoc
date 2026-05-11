@@ -1,14 +1,14 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.4'
-    id 'io.spring.dependency-management' version '1.1.6'
-    id 'com.google.cloud.tools.jib' version '3.4.3'
-    id 'com.google.protobuf' version '0.9.4'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    id 'com.google.cloud.tools.jib' version "${jibVersion}"
+    id 'com.google.protobuf' version "${protobufPluginVersion}"
 }
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.25.5'
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
     }
 }
 
@@ -20,7 +20,7 @@ task generateDescriptors {
     outputs.files protos.collect { "$protoSrcDir/${it}.pb" }
     doLast {
         def protocExe = configurations.detachedConfiguration(
-            dependencies.create('com.google.protobuf:protoc:3.25.5:linux-x86_64@exe')
+            dependencies.create("com.google.protobuf:protoc:${protobufVersion}:linux-x86_64@exe")
         ).singleFile
         protos.each { name ->
             exec {
@@ -37,13 +37,13 @@ generateProto.dependsOn generateDescriptors
 
 jib {
     from {
-        image = 'eclipse-temurin:21-jre-alpine'
+        image = jreImage
     }
     to {
         image = 'risingwavepoc/rw-loader:latest'
     }
     dockerClient {
-        executable = '/home/alex/data/software/docker/docker'
+        executable = dockerExecutable
     }
 }
 
@@ -54,17 +54,17 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.kafka:spring-kafka'
-    implementation 'com.google.protobuf:protobuf-java:3.25.5'
+    implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.liquibase:liquibase-core'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
-    implementation 'org.postgresql:postgresql:42.7.4'
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}"
+    implementation "org.postgresql:postgresql:${postgresqlVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(javaVersion.toInteger())
     }
 }
 

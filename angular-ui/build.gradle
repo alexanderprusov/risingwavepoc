@@ -1,6 +1,6 @@
 plugins {
     id 'java'  // required by Jib; no Java sources are compiled
-    id 'com.google.cloud.tools.jib' version '3.4.3'
+    id 'com.google.cloud.tools.jib' version "${jibVersion}"
 }
 
 // Disable all Java lifecycle tasks – this module has no Java sources
@@ -43,7 +43,7 @@ task ngBuild(type: Exec) {
 // ------------------------------------------------------------------
 jib {
     from {
-        image = 'nginx:alpine'
+        image = nginxImage
     }
     to {
         image = 'risingwavepoc/rw-webui:latest'
@@ -65,7 +65,7 @@ jib {
         }
     }
     dockerClient {
-        executable = '/home/alex/data/software/docker/docker'
+        executable = dockerExecutable
     }
 }
 
