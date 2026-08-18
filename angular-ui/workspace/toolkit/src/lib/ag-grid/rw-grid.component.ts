@@ -17,13 +17,13 @@ export class RwGridComponent implements OnInit, OnDestroy {
   readonly totalRowsChange = output<number>();
 
   readonly theme: Theme = themeQuartz.withPart(colorSchemeDark).withParams({
-    backgroundColor: 'oklch(12.9% 0.042 264.695)',
-    headerBackgroundColor: 'oklch(20.8% 0.042 265.755)',
-    oddRowBackgroundColor: 'oklch(20.8% 0.042 265.755)',
-    borderColor: 'oklch(37.2% 0.044 257.287)',
-    foregroundColor: 'oklch(96.8% 0.007 247.896)',
-    accentColor: 'oklch(68.5% 0.169 237.323)',
-    rowHoverColor: 'oklch(27.9% 0.041 260.031)',
+    backgroundColor: 'var(--p-surface-950)',
+    headerBackgroundColor: 'var(--p-surface-900)',
+    oddRowBackgroundColor: 'var(--p-surface-900)',
+    borderColor: 'var(--p-surface-700)',
+    foregroundColor: 'var(--p-surface-0)',
+    accentColor: 'var(--p-primary-color)',
+    rowHoverColor: 'var(--p-surface-800)',
   });
 
   readonly defaultColDef: ColDef = { resizable: true };

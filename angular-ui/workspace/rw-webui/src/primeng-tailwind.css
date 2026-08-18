@@ -1,0 +1,12 @@
+@import 'tailwindcss-primeui';
+
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+  @import 'tailwindcss/theme.css' layer(theme);
+  @import 'tailwindcss/preflight.css' layer(base);
+}
+
+@layer tailwind-utilities {
+  @import 'tailwindcss/utilities.css' layer(utilities);
+}

@@ -31,7 +31,9 @@
               }
             ],
             "styles": [
+              "workspace/rw-webui/src/primeng-tailwind.css",
               "workspace/rw-webui/src/styles.scss",
+              "node_modules/primeicons/primeicons.css",
               "node_modules/dockview-core/dist/styles/dockview.css"
             ]
           },

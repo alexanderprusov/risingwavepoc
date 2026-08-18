@@ -1,13 +1,13 @@
 .save-as-dialog {
-  background: oklch(20.8% 0.042 265.755);
-  color: oklch(96.8% 0.007 247.896);
-  border: 1px solid oklch(37.2% 0.044 257.287);
+  background: var(--p-surface-900);
+  color: var(--p-surface-0);
+  border: 1px solid var(--p-surface-700);
   border-radius: 6px;
   padding: 0;
   min-width: 300px;
 
   &::backdrop {
-    background: oklch(0% 0 0 / 60%);
+    background: var(--p-mask-background);
   }
 }
 
@@ -22,7 +22,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  color: oklch(68.5% 0.169 237.323);
+  color: var(--p-primary-color);
 }
 
 .field {
@@ -33,20 +33,20 @@
 
 .label {
   font-size: 12px;
-  color: oklch(65% 0.03 260);
+  color: var(--p-surface-400);
 }
 
 .input {
   padding: 6px 8px;
   font-size: 13px;
-  background: oklch(27.9% 0.041 260.031);
-  color: oklch(96.8% 0.007 247.896);
-  border: 1px solid oklch(37.2% 0.044 257.287);
+  background: var(--p-surface-800);
+  color: var(--p-surface-0);
+  border: 1px solid var(--p-surface-700);
   border-radius: 4px;
   outline: none;
 
   &:focus {
-    border-color: oklch(68.5% 0.169 237.323);
+    border-color: var(--p-primary-color);
   }
 }
 
@@ -61,29 +61,29 @@
   padding: 4px 12px;
   font-size: 12px;
   background: transparent;
-  color: oklch(65% 0.03 260);
-  border: 1px solid oklch(37.2% 0.044 257.287);
+  color: var(--p-surface-400);
+  border: 1px solid var(--p-surface-700);
   border-radius: 4px;
   cursor: pointer;
 
   &:hover {
-    background: oklch(27.9% 0.041 260.031);
-    color: oklch(96.8% 0.007 247.896);
+    background: var(--p-surface-800);
+    color: var(--p-surface-0);
   }
 }
 
 .confirm-btn {
   padding: 4px 12px;
   font-size: 12px;
-  background: oklch(68.5% 0.169 237.323);
-  color: oklch(12.9% 0.042 264.695);
+  background: var(--p-primary-color);
+  color: var(--p-primary-contrast-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
 
   &:hover:not(:disabled) {
-    background: oklch(75% 0.169 237.323);
+    background: var(--p-primary-hover-color);
   }
 
   &:disabled {

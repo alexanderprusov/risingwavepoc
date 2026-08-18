@@ -1,13 +1,13 @@
 .layout-dialog {
-  background: oklch(20.8% 0.042 265.755);
-  color: oklch(96.8% 0.007 247.896);
-  border: 1px solid oklch(37.2% 0.044 257.287);
+  background: var(--p-surface-900);
+  color: var(--p-surface-0);
+  border: 1px solid var(--p-surface-700);
   border-radius: 6px;
   padding: 0;
   min-width: 280px;
 
   &::backdrop {
-    background: oklch(0% 0 0 / 60%);
+    background: var(--p-mask-background);
   }
 }
 
@@ -22,13 +22,13 @@
   margin: 0 0 8px;
   font-size: 14px;
   font-weight: 600;
-  color: oklch(68.5% 0.169 237.323);
+  color: var(--p-primary-color);
 }
 
 .empty {
   margin: 0;
   font-size: 13px;
-  color: oklch(55% 0.03 260);
+  color: var(--p-surface-500);
 }
 
 .layout-btn {
@@ -37,14 +37,14 @@
   text-align: left;
   padding: 8px 10px;
   font-size: 13px;
-  background: oklch(27.9% 0.041 260.031);
-  color: oklch(96.8% 0.007 247.896);
-  border: 1px solid oklch(37.2% 0.044 257.287);
+  background: var(--p-surface-800);
+  color: var(--p-surface-0);
+  border: 1px solid var(--p-surface-700);
   border-radius: 4px;
   cursor: pointer;
 
   &:hover {
-    background: oklch(37.2% 0.044 257.287);
+    background: var(--p-surface-700);
   }
 }
 
@@ -58,13 +58,13 @@
   padding: 4px 12px;
   font-size: 12px;
   background: transparent;
-  color: oklch(65% 0.03 260);
-  border: 1px solid oklch(37.2% 0.044 257.287);
+  color: var(--p-surface-400);
+  border: 1px solid var(--p-surface-700);
   border-radius: 4px;
   cursor: pointer;
 
   &:hover {
-    background: oklch(27.9% 0.041 260.031);
-    color: oklch(96.8% 0.007 247.896);
+    background: var(--p-surface-800);
+    color: var(--p-surface-0);
   }
 }

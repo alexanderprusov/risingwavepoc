@@ -13,11 +13,11 @@
 
 .waiting-label {
   font-size: 13px;
-  color: oklch(65% 0.03 260);
+  color: var(--p-surface-400);
 
   em {
     font-style: normal;
-    color: oklch(68.5% 0.169 237.323);
+    color: var(--p-primary-color);
   }
 }
 
@@ -29,7 +29,7 @@
   margin: 0 0 10px;
   font-size: 13px;
   font-weight: 600;
-  color: oklch(68.5% 0.169 237.323);
+  color: var(--p-primary-color);
 }
 
 .table {
@@ -40,18 +40,18 @@
   th {
     text-align: left;
     padding: 6px 10px;
-    background: oklch(20.8% 0.042 265.755);
-    color: oklch(65% 0.03 260);
-    border-bottom: 1px solid oklch(37.2% 0.044 257.287);
+    background: var(--p-surface-900);
+    color: var(--p-surface-400);
+    border-bottom: 1px solid var(--p-surface-700);
   }
 
   td {
     padding: 5px 10px;
-    color: oklch(96.8% 0.007 247.896);
-    border-bottom: 1px solid oklch(27.9% 0.041 260.031);
+    color: var(--p-surface-0);
+    border-bottom: 1px solid var(--p-surface-800);
   }
 
   tr:hover td {
-    background: oklch(27.9% 0.041 260.031);
+    background: var(--p-surface-800);
   }
 }
