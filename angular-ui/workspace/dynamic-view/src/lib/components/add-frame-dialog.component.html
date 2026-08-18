@@ -1,0 +1,26 @@
+<dialog #dialog class="add-frame-dialog">
+  <div class="dialog-inner">
+    <h3 class="dialog-title">Add Frame</h3>
+
+    <label class="field">
+      <span class="label">Name</span>
+      <input class="input" type="text" [(ngModel)]="name" placeholder="Frame name" (keydown.enter)="confirm()" />
+    </label>
+
+    <label class="field">
+      <span class="label">Type</span>
+      <select class="select" [(ngModel)]="type" (ngModelChange)="onTypeChange()">
+        @for (key of typeOptions; track key) {
+          <option [value]="key">{{ key }}</option>
+        }
+      </select>
+    </label>
+
+    <ng-container #configHost />
+
+    <div class="dialog-footer">
+      <button class="cancel-btn" (click)="close()">Cancel</button>
+      <button class="confirm-btn" (click)="confirm()" [disabled]="!name.trim()">Add</button>
+    </div>
+  </div>
+</dialog>

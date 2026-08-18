@@ -1,0 +1,14 @@
+<dialog #dialog class="layout-dialog">
+  <div class="dialog-inner">
+    <h3 class="dialog-title">Load Layout</h3>
+    @if (layouts.length === 0) {
+      <p class="empty">No saved layouts.</p>
+    }
+    @for (layout of layouts; track layout.name) {
+      <button class="layout-btn" (click)="select(layout)">{{ layout.name }}</button>
+    }
+    <div class="dialog-footer">
+      <button class="cancel-btn" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</dialog>

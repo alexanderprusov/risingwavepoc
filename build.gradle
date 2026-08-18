@@ -1,0 +1,13 @@
+subprojects {
+    plugins.withId('com.google.cloud.tools.jib') {
+        jib {
+            dockerClient {
+                environment = [
+                    DOCKER_HOST     : dockerHost,
+                    DOCKER_TLS_VERIFY: dockerTlsVerify.toString(),
+                    DOCKER_CERT_PATH: dockerCertPath,
+                ]
+            }
+        }
+    }
+}

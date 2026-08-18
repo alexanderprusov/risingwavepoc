@@ -1,0 +1,70 @@
+.layout-dialog {
+  background: oklch(20.8% 0.042 265.755);
+  color: oklch(96.8% 0.007 247.896);
+  border: 1px solid oklch(37.2% 0.044 257.287);
+  border-radius: 6px;
+  padding: 0;
+  min-width: 280px;
+
+  &::backdrop {
+    background: oklch(0% 0 0 / 60%);
+  }
+}
+
+.dialog-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+}
+
+.dialog-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(68.5% 0.169 237.323);
+}
+
+.empty {
+  margin: 0;
+  font-size: 13px;
+  color: oklch(55% 0.03 260);
+}
+
+.layout-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 13px;
+  background: oklch(27.9% 0.041 260.031);
+  color: oklch(96.8% 0.007 247.896);
+  border: 1px solid oklch(37.2% 0.044 257.287);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: oklch(37.2% 0.044 257.287);
+  }
+}
+
+.dialog-footer {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel-btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: transparent;
+  color: oklch(65% 0.03 260);
+  border: 1px solid oklch(37.2% 0.044 257.287);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: oklch(27.9% 0.041 260.031);
+    color: oklch(96.8% 0.007 247.896);
+  }
+}

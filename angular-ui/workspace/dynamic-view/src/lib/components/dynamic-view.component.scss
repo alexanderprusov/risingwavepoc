@@ -1,0 +1,76 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: oklch(20.8% 0.042 265.755);
+  border-bottom: 1px solid oklch(37.2% 0.044 257.287);
+  flex-shrink: 0;
+}
+
+.layout-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: oklch(96.8% 0.007 247.896);
+  padding: 0 4px;
+
+  &.unnamed {
+    color: oklch(50% 0.02 260);
+    font-style: italic;
+  }
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.separator {
+  width: 1px;
+  height: 16px;
+  background: oklch(37.2% 0.044 257.287);
+  margin: 0 2px;
+}
+
+.add-btn,
+.save-btn,
+.save-as-btn,
+.load-btn {
+  padding: 3px 10px;
+  font-size: 12px;
+  background: oklch(27.9% 0.041 260.031);
+  color: oklch(96.8% 0.007 247.896);
+  border: 1px solid oklch(37.2% 0.044 257.287);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: oklch(37.2% 0.044 257.287);
+  }
+}
+
+.clean-btn {
+  padding: 3px 10px;
+  font-size: 12px;
+  background: transparent;
+  color: oklch(65% 0.15 25);
+  border: 1px solid oklch(40% 0.1 25);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: oklch(25% 0.08 25);
+  }
+}
+
+.dock-container {
+  flex: 1;
+  min-height: 0;
+}

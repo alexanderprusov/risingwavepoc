@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: auto;
+}
+
+.waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.waiting-label {
+  font-size: 13px;
+  color: oklch(65% 0.03 260);
+
+  em {
+    font-style: normal;
+    color: oklch(68.5% 0.169 237.323);
+  }
+}
+
+.wrapper {
+  padding: 12px;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: oklch(68.5% 0.169 237.323);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th {
+    text-align: left;
+    padding: 6px 10px;
+    background: oklch(20.8% 0.042 265.755);
+    color: oklch(65% 0.03 260);
+    border-bottom: 1px solid oklch(37.2% 0.044 257.287);
+  }
+
+  td {
+    padding: 5px 10px;
+    color: oklch(96.8% 0.007 247.896);
+    border-bottom: 1px solid oklch(27.9% 0.041 260.031);
+  }
+
+  tr:hover td {
+    background: oklch(27.9% 0.041 260.031);
+  }
+}

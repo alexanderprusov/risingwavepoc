@@ -15,7 +15,9 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "toolkit": ["./dist/toolkit"]
+      "toolkit": ["./dist/toolkit"],
+      "dynamic-view": ["./dist/dynamic-view"],
+      "dynamic-view-test": ["./dist/dynamic-view-test"]
     }
   },
   "angularCompilerOptions": {
@@ -37,6 +39,18 @@
     },
     {
       "path": "./workspace/toolkit/tsconfig.spec.json"
+    },
+    {
+      "path": "./workspace/dynamic-view/tsconfig.lib.json"
+    },
+    {
+      "path": "./workspace/dynamic-view/tsconfig.spec.json"
+    },
+    {
+      "path": "./workspace/dynamic-view-test/tsconfig.lib.json"
+    },
+    {
+      "path": "./workspace/dynamic-view-test/tsconfig.spec.json"
     }
   ]
 }

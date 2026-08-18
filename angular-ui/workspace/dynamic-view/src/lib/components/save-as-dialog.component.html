@@ -1,0 +1,15 @@
+<dialog #dialog class="save-as-dialog">
+  <div class="dialog-inner">
+    <h3 class="dialog-title">Save Layout As</h3>
+
+    <label class="field">
+      <span class="label">Name</span>
+      <input class="input" type="text" [(ngModel)]="name" placeholder="Layout name" (keydown.enter)="confirm()" />
+    </label>
+
+    <div class="dialog-footer">
+      <button class="cancel-btn" (click)="close()">Cancel</button>
+      <button class="confirm-btn" (click)="confirm()" [disabled]="!name.trim()">Save</button>
+    </div>
+  </div>
+</dialog>

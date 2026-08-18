@@ -11,12 +11,6 @@ spec:
         - path:
             type: PathPrefix
             value: /rw-loader
-      filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplacePrefixMatch
-              replacePrefixMatch: /
       backendRefs:
         - name: risingwavepoc-rw-loader
           port: {{ .Values.app.port }}

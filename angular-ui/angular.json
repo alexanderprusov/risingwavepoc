@@ -30,7 +30,10 @@
                 "input": "workspace/rw-webui/public"
               }
             ],
-            "styles": ["workspace/rw-webui/src/styles.scss"]
+            "styles": [
+              "workspace/rw-webui/src/styles.scss",
+              "node_modules/dockview-core/dist/styles/dockview.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -95,6 +98,58 @@
           "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "workspace/toolkit/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "dynamic-view": {
+      "projectType": "library",
+      "root": "workspace/dynamic-view",
+      "sourceRoot": "workspace/dynamic-view/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "workspace/dynamic-view/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "workspace/dynamic-view/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "workspace/dynamic-view/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "dynamic-view-test": {
+      "projectType": "library",
+      "root": "workspace/dynamic-view-test",
+      "sourceRoot": "workspace/dynamic-view-test/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "workspace/dynamic-view-test/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "workspace/dynamic-view-test/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "workspace/dynamic-view-test/tsconfig.spec.json"
           }
         }
       }

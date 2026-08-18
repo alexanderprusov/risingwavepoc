@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "start": "rm -rf dist/toolkit dist/dynamic-view dist/dynamic-view-test && concurrently -n toolkit,dv,dvt,app -c cyan,magenta,yellow,green \"ng build toolkit --watch\" \"ng build dynamic-view --watch\" \"wait-on dist/dynamic-view/package.json && ng build dynamic-view-test --watch\" \"wait-on dist/toolkit/package.json dist/dynamic-view-test/package.json && ng serve rw-webui --host $(hostname)\"",
+    "build": "ng build toolkit && ng build dynamic-view && ng build dynamic-view-test && ng build rw-webui",
     "test": "ng test"
   },
   "private": true,
@@ -20,6 +19,7 @@
     "ag-grid-angular": "^35.2.1",
     "ag-grid-community": "^35.2.1",
     "ag-grid-enterprise": "^35.2.1",
+    "dockview-core": "^7.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -29,11 +29,13 @@
     "@angular/compiler-cli": "^21.2.0",
     "@tailwindcss/postcss": "^4.3.0",
     "@tailwindcss/vite": "^4.3.0",
+    "concurrently": "^9.2.1",
     "jsdom": "^28.0.0",
     "ng-packagr": "^21.2.0",
     "prettier": "^3.8.1",
     "tailwindcss": "^4.3.0",
     "typescript": "~5.9.2",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "wait-on": "^9.0.10"
   }
 }

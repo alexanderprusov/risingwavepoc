@@ -1,0 +1,93 @@
+.save-as-dialog {
+  background: oklch(20.8% 0.042 265.755);
+  color: oklch(96.8% 0.007 247.896);
+  border: 1px solid oklch(37.2% 0.044 257.287);
+  border-radius: 6px;
+  padding: 0;
+  min-width: 300px;
+
+  &::backdrop {
+    background: oklch(0% 0 0 / 60%);
+  }
+}
+
+.dialog-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.dialog-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: oklch(68.5% 0.169 237.323);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  color: oklch(65% 0.03 260);
+}
+
+.input {
+  padding: 6px 8px;
+  font-size: 13px;
+  background: oklch(27.9% 0.041 260.031);
+  color: oklch(96.8% 0.007 247.896);
+  border: 1px solid oklch(37.2% 0.044 257.287);
+  border-radius: 4px;
+  outline: none;
+
+  &:focus {
+    border-color: oklch(68.5% 0.169 237.323);
+  }
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.cancel-btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: transparent;
+  color: oklch(65% 0.03 260);
+  border: 1px solid oklch(37.2% 0.044 257.287);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: oklch(27.9% 0.041 260.031);
+    color: oklch(96.8% 0.007 247.896);
+  }
+}
+
+.confirm-btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: oklch(68.5% 0.169 237.323);
+  color: oklch(12.9% 0.042 264.695);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover:not(:disabled) {
+    background: oklch(75% 0.169 237.323);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}

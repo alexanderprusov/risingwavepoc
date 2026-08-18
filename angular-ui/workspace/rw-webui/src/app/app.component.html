@@ -9,17 +9,13 @@
     </div>
   </header>
 
-  <main class="flex-1 min-h-0 p-4">
-    <ag-grid-angular
-      class="h-full w-full"
-      [theme]="theme"
-      [columnDefs]="columnDefs"
-      [defaultColDef]="defaultColDef"
-      rowModelType="serverSide"
-      [serverSideDatasource]="datasource"
-      [cacheBlockSize]="100"
-      [pagination]="true"
-      [paginationPageSize]="100"
-    />
+  <main class="flex-1 min-h-0 p-4 flex flex-col gap-2">
+    <dynamic-view class="h-48 w-full shrink-0" />
+<!--    <rw-grid-->
+<!--      class="flex-1 min-h-0 w-full"-->
+<!--      url="/rw-webui-api/ws"-->
+<!--      action="SEARCH_ALPHA_BETA"-->
+<!--      (totalRowsChange)="totalRows = $event"-->
+<!--    />-->
   </main>
 </div>

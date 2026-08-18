@@ -15,15 +15,15 @@ spring:
 
 server:
   port: 8080
+  servlet:
+    context-path: /rw-loader
 
 app:
+  openapi:
+    server-url: /rw-loader
   kafka:
     topics:
       entities: entities
       alpha: alpha
       beta: beta
       refs: refs
-
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html

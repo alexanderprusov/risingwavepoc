@@ -1,0 +1,21 @@
+<div class="toolbar">
+  @if (context.currentLayoutName) {
+    <span class="layout-name">{{ context.currentLayoutName }}</span>
+  } @else {
+    <span class="layout-name unnamed">Unnamed</span>
+  }
+
+  <div class="toolbar-actions">
+    <button class="add-btn" (click)="openAddFrameDialog()">+ Add Frame</button>
+    <button class="clean-btn" (click)="clean()">Clean</button>
+    <div class="separator"></div>
+    <button class="save-btn" (click)="saveLayout()">Save</button>
+    <button class="save-as-btn" (click)="openSaveAsDialog()">Save As…</button>
+    <button class="load-btn" (click)="openLoadDialog()">Load</button>
+  </div>
+</div>
+<div #container class="dock-container"></div>
+
+<add-frame-dialog (confirmed)="addFrame($event)" />
+<save-as-dialog (confirmed)="saveLayoutAs($event)" />
+<load-layout-dialog [layouts]="loadedLayouts" (layoutSelected)="applyLayout($event)" />

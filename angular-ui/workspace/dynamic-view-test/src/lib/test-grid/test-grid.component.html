@@ -1,0 +1,27 @@
+@if (readyPromise | async) {
+  <div class="wrapper">
+    <h4 class="title">{{ config.title }}</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Column A</th>
+          <th>Column B</th>
+          <th>Column C</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of mockRows; track row) {
+          <tr>
+            <td>Value A{{ row }}</td>
+            <td>Value B{{ row }}</td>
+            <td>Value C{{ row }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+} @else {
+  <div class="waiting">
+    <span class="waiting-label">Waiting for <em>{{ config.dependsOn }}</em>…</span>
+  </div>
+}

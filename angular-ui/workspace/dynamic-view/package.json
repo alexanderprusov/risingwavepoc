@@ -1,11 +1,12 @@
 {
-  "name": "toolkit",
+  "name": "dynamic-view",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^21.2.0",
     "@angular/core": "^21.2.0",
-    "ag-grid-community": "^35.0.0",
-    "ag-grid-angular": "^35.0.0"
+    "@angular/forms": "^21.2.0",
+    "dockview-core": "^7.0.0",
+    "dynamic-view-test": "*"
   },
   "dependencies": {
     "tslib": "^2.3.0"
